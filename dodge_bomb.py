@@ -16,6 +16,7 @@ def main():
     bom = bb_img.get_rect(center=(random.randint(160,1420),random.randint(90,790)))
     vx = 0
     vy = 0
+    
 
     while True:
         for event in pg.event.get():
@@ -26,7 +27,9 @@ def main():
         screen.blit(bg_img, [0, 0])
         screen.blit(kk_img, [900, 400])
         screen.blit(bb_img,bom)
-        #bom = bb_img.get_rect(center=(vx,vy))
+        bom = bb_img.get_rect(center=(vx,vy))
+        vx += 1
+        vy += 1
 
         pg.display.update()
         clock.tick(1000)
