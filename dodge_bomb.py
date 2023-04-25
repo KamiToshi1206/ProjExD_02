@@ -74,6 +74,10 @@ def main():
         if not tate:
             vy *= -1 # 縦方向にはみ出したら
         screen.blit(bb_img,bb_rct)
+
+        if kk_rct.colliderect(bb_rct):
+            return
+
         
         
 
