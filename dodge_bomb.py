@@ -9,7 +9,7 @@ delta = {
         }
 
 
-def check_bound(scr_rct: pg.Rect, obj_rct:pg.Rect) -> tuple[bool, bool]:
+def check_bound(scr_rct: pg.Rect, obj_rct:pg.Rect) -> tuple[bool, bool]: #バウンドさせる関数
     """
     オブジェクトが画面内または画面外を判定し、真理値タプルを返す関数
     引数１：画面surfaceのRect
@@ -32,6 +32,9 @@ def main():
     bg_img = pg.image.load("ex02/fig/pg_bg.jpg")
     kk_img = pg.image.load("ex02/fig/3.png")
     kk_img = pg.transform.rotozoom(kk_img, 0, 2.0)
+    kk_img_end = pg.image.load("ex02/fig/6.png") #　終了時のこうかとんの画像
+    kk_img_end = pg.transform.rotozoom(kk_img_end, 0, 2.0)
+    
     kk_rct = kk_img.get_rect()
     kk_rct.center = 900 ,400
 
@@ -43,6 +46,9 @@ def main():
     bb_rct = bb_img.get_rect()
     bb_rct.center = x, y
     vx, vy = +1, +1
+
+    
+    
 
 
 
@@ -63,7 +69,6 @@ def main():
 
         tmr += 1
         screen.blit(bg_img, [0, 0])
-        screen.blit(kk_img, kk_rct)
         screen.blit(bb_img, bb_rct)
         bb_rct.move_ip(vx, vy)
         
@@ -75,8 +80,14 @@ def main():
             vy *= -1 # 縦方向にはみ出したら
         screen.blit(bb_img,bb_rct)
 
-        if kk_rct.colliderect(bb_rct):
-            return
+        if kk_rct.colliderect(bb_rct) : # 爆弾にぶつかったら
+            screen.blit(kk_img_end,kk_rct) #絵が変わる
+            # 終了
+        else:
+            screen.blit(kk_img, kk_rct) #こうかとんを表示
+            
+            
+    
 
         
         
