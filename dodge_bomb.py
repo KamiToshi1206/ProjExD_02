@@ -1,5 +1,6 @@
 import pygame as pg
 import sys
+import random
 
 def main():
     pg.display.set_caption("逃げろ！こうかとん")
@@ -12,8 +13,9 @@ def main():
     bb_img = pg.Surface((20,20))
     pg.draw.circle(bb_img,(255,0,0),(10,10),10)
     bb_img.set_colorkey((0,0,0))
-
-
+    bom = bb_img.get_rect(center=(random.randint(160,1420),random.randint(90,790)))
+    vx = 0
+    vy = 0
 
     while True:
         for event in pg.event.get():
@@ -23,7 +25,9 @@ def main():
         tmr += 1
         screen.blit(bg_img, [0, 0])
         screen.blit(kk_img, [900, 400])
-        screen.blit(bb_img,[160,90])
+        screen.blit(bb_img,bom)
+        #bom = bb_img.get_rect(center=(vx,vy))
+
         pg.display.update()
         clock.tick(1000)
 
