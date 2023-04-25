@@ -86,13 +86,6 @@ def main():
         else:
             screen.blit(kk_img, kk_rct) #こうかとんを表示
             
-            
-    
-
-        
-        
-
-        
         pg.display.update()
         clock.tick(1000)
 
